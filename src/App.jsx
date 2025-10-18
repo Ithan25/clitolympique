@@ -28,6 +28,7 @@ import photoMael from "./assets/photos/Mael.png";
 import photoMao from "./assets/photos/Mao.png";
 import photoMathys from "./assets/photos/Mathys.png";
 import photoMaxence from "./assets/photos/Maxence.png";
+import photoGroupe from "./assets/photos/groupe.jpg";
 import {
   Trophy,
   Users,
@@ -54,7 +55,13 @@ const SectionTitle = ({ children, className = "" }) => (
   </motion.h2>
 );
 
-const PlayerCard = ({ name, position, number, isCoach = false, photo = null }) => (
+const PlayerCard = ({
+  name,
+  position,
+  number,
+  isCoach = false,
+  photo = null,
+}) => (
   <motion.div
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
@@ -65,7 +72,7 @@ const PlayerCard = ({ name, position, number, isCoach = false, photo = null }) =
   >
     <Card className="bg-white border-slate-200 hover:shadow-xl hover:shadow-fuchsia-100/50 transition-all duration-300">
       <CardHeader className="text-center pb-2">
-        <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center text-white text-2xl font-bold shadow-lg relative overflow-hidden">
+        <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-zinc-700 to-pink-700 flex items-center justify-center text-white text-2xl font-bold shadow-lg relative overflow-hidden">
           {photo ? (
             <img
               src={photo}
@@ -77,7 +84,11 @@ const PlayerCard = ({ name, position, number, isCoach = false, photo = null }) =
               }}
             />
           ) : null}
-          <div className={`w-full h-full flex items-center justify-center ${photo ? "hidden" : ""}`}>
+          <div
+            className={`w-full h-full flex items-center justify-center ${
+              photo ? "hidden" : ""
+            }`}
+          >
             {isCoach ? name.charAt(0) : number || name.charAt(0)}
           </div>
           {!isCoach && number && (
@@ -88,7 +99,7 @@ const PlayerCard = ({ name, position, number, isCoach = false, photo = null }) =
         </div>
         <CardTitle
           className={`text-lg ${
-            isCoach ? "text-fuchsia-600 font-semibold" : "text-slate-800"
+            isCoach ? "text-pink-700 font-semibold" : "text-slate-800"
           }`}
         >
           {name}
@@ -185,25 +196,45 @@ function App() {
 
   // Photos des joueurs
   const playerPhotos = {
-    "Gaetan": photoGaetan,
-    "Amaury": photoAmaury,
-    "Mathys": photoMathys,
-    "Mao": photoMao,
-    "Maël": photoMael,
-    "Maxence": photoMaxence,
-    "Killian": photoKillian,
+    Gaetan: photoGaetan,
+    Amaury: photoAmaury,
+    Mathys: photoMathys,
+    Mao: photoMao,
+    Maël: photoMael,
+    Maxence: photoMaxence,
+    Killian: photoKillian,
   };
 
   const players = [
-    { name: "Gaetan", position: "Gardien", number: 1, photo: playerPhotos["Gaetan"] },
-    { name: "Amaury", position: "Attaquant", number: 2, photo: playerPhotos["Amaury"] },
+    {
+      name: "Gaetan",
+      position: "Gardien",
+      number: 1,
+      photo: playerPhotos["Gaetan"],
+    },
+    {
+      name: "Amaury",
+      position: "Attaquant",
+      number: 2,
+      photo: playerPhotos["Amaury"],
+    },
     { name: "Mathys", position: "?", number: 3, photo: playerPhotos["Mathys"] },
     { name: "Owen", position: "?", number: 5 },
     { name: "Eliott", position: "?", number: 7 },
     { name: "Mao", position: "?", number: 8, photo: playerPhotos["Mao"] },
     { name: "Maël", position: "?", number: 9, photo: playerPhotos["Maël"] },
-    { name: "Maxence", position: "?", number: 10, photo: playerPhotos["Maxence"] },
-    { name: "Killian", position: "?", number: 11, photo: playerPhotos["Killian"] },
+    {
+      name: "Maxence",
+      position: "?",
+      number: 10,
+      photo: playerPhotos["Maxence"],
+    },
+    {
+      name: "Killian",
+      position: "?",
+      number: 11,
+      photo: playerPhotos["Killian"],
+    },
   ];
 
   return (
@@ -242,13 +273,13 @@ function App() {
                     e.target.nextSibling.style.display = "block";
                   }}
                 />
-                <Trophy className="text-fuchsia-600 w-12 h-12 hidden" />
+                <Trophy className="text-pink-700 w-12 h-12 hidden" />
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-slate-900">
                   Clitolympique
                 </h1>
-                <p className="text-xs text-fuchsia-500 font-medium">
+                <p className="text-xs text-pink-300 font-medium">
                   Football Club
                 </p>
               </div>
@@ -266,7 +297,7 @@ function App() {
                 <motion.button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="relative px-4 py-2 text-slate-600 hover:text-fuchsia-600 transition-all duration-300 font-medium rounded-lg group"
+                  className="relative px-4 py-2 text-slate-600 hover:text-pink-700 transition-all duration-300 font-medium rounded-lg group"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   initial={{ opacity: 0, y: -20 }}
@@ -282,7 +313,7 @@ function App() {
 
             {/* Mobile menu button */}
             <motion.button
-              className="md:hidden p-2 text-slate-600 hover:text-fuchsia-600 rounded-lg"
+              className="md:hidden p-2 text-slate-600 hover:text-pink-700 rounded-lg"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -441,7 +472,7 @@ function App() {
                     e.target.nextSibling.style.display = "block";
                   }}
                 />
-                <Trophy className="text-fuchsia-600 hidden" size={80} />
+                <Trophy className="text-pink-700 hidden" size={80} />
               </div>
             </motion.div>
 
@@ -489,7 +520,7 @@ function App() {
                     }}
                   />
                 </div>
-                <span className="text-xs text-slate-500 group-hover:text-fuchsia-600 transition-colors duration-300 font-medium">
+                <span className="text-xs text-slate-500 group-hover:text-pink-700 transition-colors duration-300 font-medium">
                   Scroll
                 </span>
               </motion.button>
@@ -512,19 +543,19 @@ function App() {
             >
               <div className="prose prose-lg text-slate-700 space-y-4">
                 <p className="text-lg leading-relaxed">
-                  Le <strong className="text-fuchsia-600">Clitolympique</strong>{" "}
+                  Le <strong className="text-pink-700">Clitolympique</strong>{" "}
                   est une équipe passionnée de football sixt, un format rapide,
                   technique et collectif.
                 </p>
                 <p className="text-lg leading-relaxed">
                   Nous sommes actuellement en pleine préparation pour le{" "}
-                  <strong className="text-fuchsia-600">Tournoi du SMPFC</strong>{" "}
+                  <strong className="text-pink-700">Tournoi du SMPFC</strong>{" "}
                   (Savenay Malville Prinquiau Football Club), prévu pour{" "}
-                  <strong className="text-fuchsia-600">mai 2026</strong>.
+                  <strong className="text-pink-700">mai 2026</strong>.
                 </p>
                 <p className="text-lg leading-relaxed">
                   Le club est soutenu par{" "}
-                  <strong className="text-fuchsia-600">
+                  <strong className="text-pink-700">
                     Mon Coach Informatique (MCI)
                   </strong>{" "}
                   –{" "}
@@ -532,12 +563,12 @@ function App() {
                     href="https://moncoachinformatique.fr"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-fuchsia-600 hover:text-slate-800 underline"
+                    className="text-pink-700 hover:text-slate-800 underline"
                   >
                     moncoachinformatique.fr
                   </a>
                   , présidé par{" "}
-                  <strong className="text-fuchsia-600">
+                  <strong className="text-pink-700">
                     Ithan Boismard–Gillot
                   </strong>
                   .
@@ -553,7 +584,7 @@ function App() {
               className="relative"
             >
               <div className="h-80 bg-slate-100 rounded-lg shadow-xl flex items-center justify-center">
-                <Users size={80} className="text-fuchsia-600" />
+                <Users size={80} className="text-pink-700" />
               </div>
             </motion.div>
           </div>
@@ -567,7 +598,7 @@ function App() {
 
           {/* Staff */}
           <div className="mb-12">
-            <h3 className="text-2xl font-bold text-center text-fuchsia-600 mb-6">
+            <h3 className="text-2xl font-bold text-center text-pink-700 mb-6">
               Encadrement
             </h3>
             <div className="flex justify-center gap-8 flex-wrap">
@@ -629,8 +660,8 @@ function App() {
                 <p className="text-lg text-slate-700 leading-relaxed">
                   Découvrez notre maillot officiel pour cette saison 2025-2026,
                   représentant l'esprit et la passion de{" "}
-                  <strong className="text-fuchsia-600">ClitOlympique</strong>.
-                  Un design original qui allie tradition footballistique et
+                  <strong className="text-pink-700">ClitOlympique</strong>. Un
+                  design original qui allie tradition footballistique et
                   modernité.
                 </p>
                 <p className="text-slate-600">
@@ -644,7 +675,7 @@ function App() {
               <div className="grid grid-cols-2 gap-4 mt-8">
                 <div className="bg-slate-50 p-4 rounded-lg border border-slate-200">
                   <div className="text-sm text-slate-600 mb-1">Saison</div>
-                  <div className="text-2xl font-bold text-fuchsia-600">
+                  <div className="text-2xl font-bold text-pink-700">
                     2025-2026
                   </div>
                 </div>
@@ -652,7 +683,7 @@ function App() {
                   <div className="text-sm text-slate-600">
                     Design Original à
                   </div>
-                  <div className="text-2xl font-bold text-fuchsia-600 mb-1">
+                  <div className="text-2xl font-bold text-pink-700 mb-1">
                     100%
                   </div>
                 </div>
@@ -689,8 +720,19 @@ function App() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div className="h-80 bg-slate-100 rounded-lg shadow-xl flex items-center justify-center">
-                <Target size={80} className="text-fuchsia-600" />
+              <div className="h-80 bg-slate-100 rounded-lg shadow-xl overflow-hidden">
+                <img
+                  src={photoGroupe}
+                  alt="Photo de groupe de l'équipe Clitolympique"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.style.display = "none";
+                    e.target.nextSibling.style.display = "flex";
+                  }}
+                />
+                <div className="w-full h-full bg-slate-100 rounded-lg shadow-xl flex items-center justify-center hidden">
+                  <Target size={80} className="text-pink-700" />
+                </div>
               </div>
             </motion.div>
 
@@ -703,10 +745,10 @@ function App() {
               <div className="space-y-6">
                 <p className="text-lg leading-relaxed text-slate-700">
                   Notre objectif : être prêts pour le tournoi du{" "}
-                  <strong className="text-fuchsia-600">
+                  <strong className="text-pink-700">
                     Savenay Malville Prinquiau Football Club (SMPFC)
                   </strong>
-                  , en <strong className="text-fuchsia-600">mai 2026</strong>.
+                  , en <strong className="text-pink-700">mai 2026</strong>.
                 </p>
                 <p className="text-lg leading-relaxed text-slate-700">
                   Entraînements, stratégie et esprit d'équipe sont au cœur de
@@ -716,11 +758,11 @@ function App() {
                 <div className="bg-gradient-to-br from-slate-800 to-slate-900 text-white p-6 rounded-xl shadow-xl border border-fuchsia-200/20">
                   <div className="text-center">
                     <Calendar
-                      className="mx-auto mb-2 text-fuchsia-300"
+                      className="mx-auto mb-2 text-pink-200"
                       size={32}
                     />
                     <p className="text-sm opacity-90">Jours restants</p>
-                    <p className="text-4xl font-bold text-fuchsia-300">
+                    <p className="text-4xl font-bold text-pink-200">
                       {daysUntilTournament}
                     </p>
                     <p className="text-sm opacity-90">jusqu'au tournoi SMPFC</p>
@@ -748,18 +790,18 @@ function App() {
             >
               <Card className="bg-slate-50 border-slate-200">
                 <CardHeader>
-                  <CardTitle className="text-fuchsia-600 flex items-center gap-2">
+                  <CardTitle className="text-pink-700 flex items-center gap-2">
                     <Mail size={20} />
                     Informations de contact
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-center gap-3">
-                    <Mail className="text-fuchsia-600" size={18} />
+                    <Mail className="text-pink-700" size={18} />
                     <span>contact@clitolympique.fr</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <MapPin className="text-fuchsia-600" size={18} />
+                    <MapPin className="text-pink-700" size={18} />
                     <span>Région Loire-Atlantique</span>
                   </div>
                   <div className="pt-4">
@@ -770,7 +812,7 @@ function App() {
                       <Button
                         variant="outline"
                         size="sm"
-                        className="border-slate-300 text-fuchsia-600 hover:bg-slate-100"
+                        className="border-slate-300 text-pink-700 hover:bg-slate-100"
                       >
                         <Facebook size={16} className="mr-2" />
                         Facebook
@@ -778,7 +820,7 @@ function App() {
                       <Button
                         variant="outline"
                         size="sm"
-                        className="border-slate-300 text-fuchsia-600 hover:bg-slate-100"
+                        className="border-slate-300 text-pink-700 hover:bg-slate-100"
                       >
                         <Instagram size={16} className="mr-2" />
                         Instagram
@@ -790,7 +832,7 @@ function App() {
                       href="https://moncoachinformatique.fr"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-fuchsia-600 hover:text-slate-800 underline font-medium"
+                      className="text-pink-700 hover:text-slate-800 underline font-medium"
                     >
                       🌐 moncoachinformatique.fr
                     </a>
@@ -808,7 +850,7 @@ function App() {
             >
               <Card className="bg-slate-50 border-slate-200">
                 <CardHeader>
-                  <CardTitle className="text-fuchsia-600">
+                  <CardTitle className="text-pink-700">
                     Envoyez-nous un message
                   </CardTitle>
                 </CardHeader>
@@ -870,11 +912,11 @@ function App() {
             viewport={{ once: true }}
             className="flex justify-center items-center gap-4 mb-4"
           >
-            <Trophy className="text-fuchsia-600" size={24} />
+            <Trophy className="text-pink-700" size={24} />
             <Star className="text-slate-600" size={20} />
-            <Heart className="text-fuchsia-600" size={20} />
+            <Heart className="text-pink-700" size={20} />
             <Star className="text-slate-600" size={20} />
-            <Trophy className="text-fuchsia-600" size={24} />
+            <Trophy className="text-pink-700" size={24} />
           </motion.div>
           <p className="text-lg">© 2025 Clitolympique</p>
         </div>
