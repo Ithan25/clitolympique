@@ -5,13 +5,13 @@
 
 export const emailConfig = {
   // Votre Service ID (ex: 'service_xxxxxxx')
-  serviceID: 'YOUR_SERVICE_ID',
-  
-  // Votre Template ID (ex: 'template_xxxxxxx')  
-  templateID: 'YOUR_TEMPLATE_ID',
-  
+  serviceID: "service_uzywrgg",
+
+  // Votre Template ID (ex: 'template_xxxxxxx')
+  templateID: "template_uft07o5", // Remplacez par votre Template ID
+
   // Votre Public Key (ex: 'xxxxxxxxxxxxxxx')
-  publicKey: 'YOUR_PUBLIC_KEY',
+  publicKey: "HsRu6LSfcJC6xJFsG", // Remplacez par votre Public Key
 };
 
 // 📧 ÉTAPES POUR CONFIGURER EMAILJS :
@@ -19,7 +19,7 @@ export const emailConfig = {
 // 2. Créez un service email (Gmail, Yahoo, etc.)
 // 3. Créez un template d'email avec ces variables :
 //    - {{from_name}} : nom de l'expéditeur
-//    - {{from_email}} : email de l'expéditeur  
+//    - {{from_email}} : email de l'expéditeur
 //    - {{message}} : message
 //    - {{to_name}} : destinataire (Clitolympique)
 // 4. Copiez vos clés dans ce fichier

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import emailjs from '@emailjs/browser';
-import { emailConfig } from './config/emailConfig';
+import emailjs from "@emailjs/browser";
+import { emailConfig } from "./config/emailConfig";
 import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card";
 import { Button } from "./components/ui/button";
 import { Input } from "./components/ui/input";
@@ -189,12 +189,16 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // Vérification de la configuration EmailJS
-    if (emailConfig.serviceID === 'YOUR_SERVICE_ID' || 
-        emailConfig.templateID === 'YOUR_TEMPLATE_ID' || 
-        emailConfig.publicKey === 'YOUR_PUBLIC_KEY') {
-      alert("⚠️ Configuration EmailJS requise ! Consultez src/config/emailConfig.js pour les instructions.");
+    if (
+      emailConfig.serviceID === "YOUR_SERVICE_ID" ||
+      emailConfig.templateID === "YOUR_TEMPLATE_ID" ||
+      emailConfig.publicKey === "YOUR_PUBLIC_KEY"
+    ) {
+      alert(
+        "⚠️ Configuration EmailJS requise ! Consultez src/config/emailConfig.js pour les instructions."
+      );
       return;
     }
 
@@ -209,18 +213,20 @@ function App() {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
-          to_name: 'Clitolympique',
+          to_name: "Clitolympique",
           reply_to: formData.email,
         },
         emailConfig.publicKey
       );
 
-      console.log('Email envoyé avec succès!', result.text);
+      console.log("Email envoyé avec succès!", result.text);
       alert("✅ Merci pour votre message ! Nous vous recontacterons bientôt.");
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
-      console.error('Erreur lors de l\'envoi:', error);
-      alert("❌ Erreur lors de l'envoi du message. Veuillez réessayer plus tard.");
+      console.error("Erreur lors de l'envoi:", error);
+      alert(
+        "❌ Erreur lors de l'envoi du message. Veuillez réessayer plus tard."
+      );
     } finally {
       setIsSubmitting(false);
     }
