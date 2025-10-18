@@ -305,8 +305,8 @@ function App() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   {item.label}
-                  <div className="absolute inset-0 bg-fuchsia-50 rounded-lg opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
-                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-fuchsia-500 group-hover:w-full transition-all duration-300"></div>
+                  <div className="absolute inset-0 bg-pink-100 rounded-lg opacity-0 group-hover:opacity-60 transition-opacity duration-300"></div>
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-pink-700 group-hover:w-full transition-all duration-300"></div>
                 </motion.button>
               ))}
             </nav>
@@ -363,6 +363,7 @@ function App() {
             ></div>
 
             {/* Formes géométriques flottantes animées */}
+            {/* Formes principales existantes */}
             <motion.div
               className="absolute top-20 left-10 w-32 h-32 rounded-full opacity-20"
               style={{ background: "rgba(207, 95, 144, 0.5)" }}
@@ -414,7 +415,149 @@ function App() {
               }}
             />
 
-            {/* Particules brillantes */}
+            {/* Nouvelles formes géométriques pour plus de détails */}
+            {/* Hexagone flottant */}
+            <motion.div
+              className="absolute top-1/4 left-1/2 w-16 h-16 opacity-20"
+              style={{
+                background: "linear-gradient(45deg, rgba(207, 95, 144, 0.4), rgba(167, 72, 96, 0.4))",
+                clipPath: "polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)",
+              }}
+              animate={{
+                rotate: [0, 360],
+                scale: [0.8, 1.2, 0.8],
+                opacity: [0.2, 0.35, 0.2],
+              }}
+              transition={{
+                duration: 15,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            {/* Losange avec dégradé */}
+            <motion.div
+              className="absolute bottom-1/4 right-1/4 w-28 h-28 opacity-18"
+              style={{
+                background: "conic-gradient(from 45deg, rgba(81, 50, 68, 0.3), rgba(207, 95, 144, 0.3), rgba(167, 72, 96, 0.3))",
+                transform: "rotate(45deg)",
+              }}
+              animate={{
+                rotate: [45, 405],
+                x: [0, -20, 0],
+                y: [0, 15, 0],
+                opacity: [0.18, 0.32, 0.18],
+              }}
+              transition={{
+                duration: 11,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            {/* Rectangle avec coins arrondis */}
+            <motion.div
+              className="absolute top-3/4 left-20 w-36 h-8 opacity-15"
+              style={{
+                background: "rgba(207, 95, 144, 0.4)",
+                borderRadius: "50px",
+              }}
+              animate={{
+                rotate: [0, 15, -15, 0],
+                scale: [1, 1.1, 0.9, 1],
+                opacity: [0.15, 0.28, 0.15],
+              }}
+              transition={{
+                duration: 9,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            {/* Cercle avec effet de pulse */}
+            <motion.div
+              className="absolute top-1/3 right-1/3 w-12 h-12 rounded-full opacity-22"
+              style={{
+                background: "radial-gradient(circle, rgba(167, 72, 96, 0.5) 0%, transparent 70%)",
+              }}
+              animate={{
+                scale: [1, 1.8, 1],
+                opacity: [0.22, 0.05, 0.22],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            {/* Formes en arrière-plan avec blur */}
+            <motion.div
+              className="absolute top-10 right-1/4 w-40 h-40 rounded-full opacity-8 blur-sm"
+              style={{ background: "rgba(81, 50, 68, 0.3)" }}
+              animate={{
+                x: [0, 30, 0],
+                y: [0, -20, 0],
+                scale: [1, 1.15, 1],
+              }}
+              transition={{
+                duration: 20,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            <motion.div
+              className="absolute bottom-10 left-1/4 w-32 h-32 opacity-12 blur-sm"
+              style={{
+                background: "rgba(207, 95, 144, 0.25)",
+                borderRadius: "40% 60% 60% 40% / 60% 30% 70% 40%",
+              }}
+              animate={{
+                rotate: [0, 180, 360],
+                scale: [0.9, 1.2, 0.9],
+              }}
+              transition={{
+                duration: 18,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+
+            {/* Lignes géométriques subtiles */}
+            <motion.div
+              className="absolute top-1/2 left-0 w-full h-px opacity-10"
+              style={{
+                background: "linear-gradient(90deg, transparent 0%, rgba(207, 95, 144, 0.4) 30%, rgba(167, 72, 96, 0.4) 70%, transparent 100%)",
+              }}
+              animate={{
+                opacity: [0.1, 0.25, 0.1],
+                scaleX: [1, 1.05, 1],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            <motion.div
+              className="absolute top-0 left-1/2 w-px h-full opacity-8"
+              style={{
+                background: "linear-gradient(180deg, transparent 0%, rgba(81, 50, 68, 0.3) 30%, rgba(207, 95, 144, 0.3) 70%, transparent 100%)",
+              }}
+              animate={{
+                opacity: [0.08, 0.2, 0.08],
+                scaleY: [1, 1.02, 1],
+              }}
+              transition={{
+                duration: 12,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            {/* Particules brillantes enrichies */}
             <motion.div
               className="absolute top-1/3 left-1/4 w-2 h-2 bg-white rounded-full opacity-60"
               animate={{
@@ -449,6 +592,56 @@ function App() {
                 duration: 3.5,
                 repeat: Infinity,
                 delay: 2,
+              }}
+            />
+
+            {/* Nouvelles particules */}
+            <motion.div
+              className="absolute top-1/5 left-3/5 w-1 h-1 bg-white rounded-full opacity-45"
+              animate={{
+                scale: [0, 1.2, 0],
+                opacity: [0, 0.65, 0],
+              }}
+              transition={{
+                duration: 4.5,
+                repeat: Infinity,
+                delay: 1.5,
+              }}
+            />
+            <motion.div
+              className="absolute bottom-1/5 right-1/5 w-2.5 h-2.5 bg-white rounded-full opacity-35"
+              animate={{
+                scale: [0, 0.8, 0],
+                opacity: [0, 0.55, 0],
+              }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                delay: 0.8,
+              }}
+            />
+            <motion.div
+              className="absolute top-2/3 left-1/6 w-1.5 h-1.5 bg-white rounded-full opacity-55"
+              animate={{
+                scale: [0, 1, 0],
+                opacity: [0, 0.75, 0],
+              }}
+              transition={{
+                duration: 3.8,
+                repeat: Infinity,
+                delay: 2.5,
+              }}
+            />
+            <motion.div
+              className="absolute top-1/6 right-2/5 w-1 h-1 bg-white rounded-full opacity-40"
+              animate={{
+                scale: [0, 1.1, 0],
+                opacity: [0, 0.6, 0],
+              }}
+              transition={{
+                duration: 4.2,
+                repeat: Infinity,
+                delay: 3,
               }}
             />
           </div>
