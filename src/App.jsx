@@ -945,11 +945,11 @@ function App() {
               transition={{ duration: 0.8 }}
               className="mb-12"
             >
-              <div className="w-96 h-96 mx-auto mb-8 mt-32 flex items-center justify-center">
+              <div className="w-full max-w-96 h-80 sm:h-96 mx-auto mb-8 mt-32 flex items-center justify-center px-4 sm:px-0">
                 <img
                   src={logoClitolympique}
                   alt="Clitolympique Logo"
-                  className="w-72 h-72 object-contain drop-shadow-lg"
+                  className="w-64 h-64 sm:w-72 sm:h-72 object-contain drop-shadow-lg"
                   onError={(e) => {
                     e.target.style.display = "none";
                     e.target.nextSibling.style.display = "block";
