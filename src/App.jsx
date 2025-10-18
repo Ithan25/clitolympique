@@ -652,15 +652,15 @@ function App() {
             />
 
             {/* NIVEAU DE DÉTAILS SUPPLÉMENTAIRES - EFFETS AVANCÉS */}
-            
+
             {/* Spirale de particules */}
             {[...Array(8)].map((_, i) => (
               <motion.div
                 key={`spiral-${i}`}
                 className="absolute w-1 h-1 bg-white rounded-full opacity-30"
                 style={{
-                  left: `${50 + 15 * Math.cos(i * Math.PI / 4)}%`,
-                  top: `${50 + 15 * Math.sin(i * Math.PI / 4)}%`,
+                  left: `${50 + 15 * Math.cos((i * Math.PI) / 4)}%`,
+                  top: `${50 + 15 * Math.sin((i * Math.PI) / 4)}%`,
                 }}
                 animate={{
                   scale: [0, 1, 0],
@@ -703,13 +703,15 @@ function App() {
             ))}
 
             {/* Formes géométriques complexes supplémentaires */}
-            
+
             {/* Étoile à 8 branches */}
             <motion.div
               className="absolute top-1/6 left-2/3 w-20 h-20 opacity-12"
               style={{
-                background: "conic-gradient(from 0deg, rgba(81, 50, 68, 0.3), rgba(207, 95, 144, 0.3), rgba(167, 72, 96, 0.3), rgba(81, 50, 68, 0.3))",
-                clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
+                background:
+                  "conic-gradient(from 0deg, rgba(81, 50, 68, 0.3), rgba(207, 95, 144, 0.3), rgba(167, 72, 96, 0.3), rgba(81, 50, 68, 0.3))",
+                clipPath:
+                  "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
               }}
               animate={{
                 rotate: [0, 360],
@@ -727,8 +729,10 @@ function App() {
             <motion.div
               className="absolute bottom-1/6 left-1/6 w-16 h-16 opacity-18"
               style={{
-                background: "linear-gradient(72deg, rgba(207, 95, 144, 0.4), rgba(81, 50, 68, 0.4))",
-                clipPath: "polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)",
+                background:
+                  "linear-gradient(72deg, rgba(207, 95, 144, 0.4), rgba(81, 50, 68, 0.4))",
+                clipPath:
+                  "polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)",
               }}
               animate={{
                 rotate: [0, 72, 144, 216, 288, 360],
@@ -747,7 +751,8 @@ function App() {
               className="absolute top-2/3 right-1/6 w-12 h-12 opacity-20"
               style={{
                 background: "rgba(167, 72, 96, 0.5)",
-                clipPath: "polygon(40% 0%, 60% 0%, 60% 40%, 100% 40%, 100% 60%, 60% 60%, 60% 100%, 40% 100%, 40% 60%, 0% 60%, 0% 40%, 40% 40%)",
+                clipPath:
+                  "polygon(40% 0%, 60% 0%, 60% 40%, 100% 40%, 100% 60%, 60% 60%, 60% 100%, 40% 100%, 40% 60%, 0% 60%, 0% 40%, 40% 40%)",
               }}
               animate={{
                 rotate: [0, 90, 180, 270, 360],
@@ -766,8 +771,10 @@ function App() {
             <motion.div
               className="absolute top-1/2 left-0 w-full h-24 opacity-8"
               style={{
-                background: "linear-gradient(90deg, transparent 0%, rgba(207, 95, 144, 0.2) 25%, rgba(167, 72, 96, 0.2) 50%, rgba(81, 50, 68, 0.2) 75%, transparent 100%)",
-                clipPath: "polygon(0% 50%, 10% 20%, 20% 60%, 30% 30%, 40% 70%, 50% 40%, 60% 80%, 70% 35%, 80% 65%, 90% 25%, 100% 55%, 100% 100%, 0% 100%)",
+                background:
+                  "linear-gradient(90deg, transparent 0%, rgba(207, 95, 144, 0.2) 25%, rgba(167, 72, 96, 0.2) 50%, rgba(81, 50, 68, 0.2) 75%, transparent 100%)",
+                clipPath:
+                  "polygon(0% 50%, 10% 20%, 20% 60%, 30% 30%, 40% 70%, 50% 40%, 60% 80%, 70% 35%, 80% 65%, 90% 25%, 100% 55%, 100% 100%, 0% 100%)",
               }}
               animate={{
                 x: [-100, 100],
@@ -851,7 +858,8 @@ function App() {
             <motion.div
               className="absolute top-1/4 left-1/4 w-32 h-px opacity-12"
               style={{
-                background: "linear-gradient(90deg, transparent 0%, rgba(207, 95, 144, 0.5) 50%, transparent 100%)",
+                background:
+                  "linear-gradient(90deg, transparent 0%, rgba(207, 95, 144, 0.5) 50%, transparent 100%)",
                 transformOrigin: "left center",
               }}
               animate={{
@@ -869,7 +877,8 @@ function App() {
             <motion.div
               className="absolute bottom-1/4 right-1/4 w-24 h-px opacity-10"
               style={{
-                background: "linear-gradient(90deg, transparent 0%, rgba(167, 72, 96, 0.5) 50%, transparent 100%)",
+                background:
+                  "linear-gradient(90deg, transparent 0%, rgba(167, 72, 96, 0.5) 50%, transparent 100%)",
                 transformOrigin: "right center",
               }}
               animate={{
