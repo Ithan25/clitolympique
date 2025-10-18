@@ -1107,7 +1107,7 @@ function App() {
             <h3 className="text-2xl font-bold text-center text-slate-700 mb-8">
               Joueurs
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {players.map((player, index) => (
                 <PlayerCard
                   key={index}
@@ -1127,14 +1127,14 @@ function App() {
         <div className="container mx-auto px-4">
           <SectionTitle className="text-slate-900">Notre Maillot</SectionTitle>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          <div className="flex flex-col items-center max-w-6xl mx-auto">
             {/* Description à gauche */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
-              className="space-y-6"
+              className="space-y-6 mb-8"
             >
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold text-slate-900">
