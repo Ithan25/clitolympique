@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import emailjs from '@emailjs/browser';
+import { emailConfig } from './config/emailConfig';
 import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card";
 import { Button } from "./components/ui/button";
 import { Input } from "./components/ui/input";
@@ -167,6 +169,7 @@ function App() {
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Calcul des jours restants jusqu'au tournoi (mai 2026)
   useEffect(() => {
@@ -184,10 +187,43 @@ function App() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Merci pour votre message ! Nous vous recontacterons bientôt.");
-    setFormData({ name: "", email: "", message: "" });
+    
+    // Vérification de la configuration EmailJS
+    if (emailConfig.serviceID === 'YOUR_SERVICE_ID' || 
+        emailConfig.templateID === 'YOUR_TEMPLATE_ID' || 
+        emailConfig.publicKey === 'YOUR_PUBLIC_KEY') {
+      alert("⚠️ Configuration EmailJS requise ! Consultez src/config/emailConfig.js pour les instructions.");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Envoi de l'email via EmailJS
+      const result = await emailjs.send(
+        emailConfig.serviceID,
+        emailConfig.templateID,
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_name: 'Clitolympique',
+          reply_to: formData.email,
+        },
+        emailConfig.publicKey
+      );
+
+      console.log('Email envoyé avec succès!', result.text);
+      alert("✅ Merci pour votre message ! Nous vous recontacterons bientôt.");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error('Erreur lors de l\'envoi:', error);
+      alert("❌ Erreur lors de l'envoi du message. Veuillez réessayer plus tard.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const scrollToSection = (sectionId) => {
@@ -1323,9 +1359,17 @@ function App() {
                     </div>
                     <Button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-pink-700 to-pink-900 hover:from-fuchsia-700 hover:to-pink-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                      disabled={isSubmitting}
+                      className="w-full bg-gradient-to-r from-pink-700 to-pink-900 hover:from-fuchsia-700 hover:to-pink-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      Envoyer le message
+                      {isSubmitting ? (
+                        <div className="flex items-center justify-center">
+                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                          Envoi en cours...
+                        </div>
+                      ) : (
+                        "📧 Envoyer le message"
+                      )}
                     </Button>
                   </form>
                 </CardContent>
