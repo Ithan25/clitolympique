@@ -21,6 +21,13 @@ import maillot13 from "./assets/maillots/13.png";
 import maillot14 from "./assets/maillots/14.png";
 import maillot15 from "./assets/maillots/15.png";
 import maillot16 from "./assets/maillots/16.png";
+import photoAmaury from "./assets/photos/Amaury.png";
+import photoGaetan from "./assets/photos/Gaetan.png";
+import photoKillian from "./assets/photos/Killian.png";
+import photoMael from "./assets/photos/Mael.png";
+import photoMao from "./assets/photos/Mao.png";
+import photoMathys from "./assets/photos/Mathys.png";
+import photoMaxence from "./assets/photos/Maxence.png";
 import {
   Trophy,
   Users,
@@ -47,7 +54,7 @@ const SectionTitle = ({ children, className = "" }) => (
   </motion.h2>
 );
 
-const PlayerCard = ({ name, position, number, isCoach = false }) => (
+const PlayerCard = ({ name, position, number, isCoach = false, photo = null }) => (
   <motion.div
     whileHover={{ scale: 1.05 }}
     whileTap={{ scale: 0.95 }}
@@ -58,8 +65,21 @@ const PlayerCard = ({ name, position, number, isCoach = false }) => (
   >
     <Card className="bg-white border-slate-200 hover:shadow-xl hover:shadow-fuchsia-100/50 transition-all duration-300">
       <CardHeader className="text-center pb-2">
-        <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center text-white text-2xl font-bold shadow-lg relative">
-          {isCoach ? name.charAt(0) : number || name.charAt(0)}
+        <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center text-white text-2xl font-bold shadow-lg relative overflow-hidden">
+          {photo ? (
+            <img
+              src={photo}
+              alt={`Photo de ${name}`}
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                e.target.style.display = "none";
+                e.target.nextSibling.style.display = "flex";
+              }}
+            />
+          ) : null}
+          <div className={`w-full h-full flex items-center justify-center ${photo ? "hidden" : ""}`}>
+            {isCoach ? name.charAt(0) : number || name.charAt(0)}
+          </div>
           {!isCoach && number && (
             <div className="absolute -top-2 -right-2 w-6 h-6 bg-fuchsia-600 text-white text-xs font-bold rounded-full flex items-center justify-center border-2 border-white">
               {number}
@@ -163,16 +183,27 @@ function App() {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // Photos des joueurs
+  const playerPhotos = {
+    "Gaetan": photoGaetan,
+    "Amaury": photoAmaury,
+    "Mathys": photoMathys,
+    "Mao": photoMao,
+    "Maël": photoMael,
+    "Maxence": photoMaxence,
+    "Killian": photoKillian,
+  };
+
   const players = [
-    { name: "Gaetan", position: "Gardien", number: 1 },
-    { name: "Amaury", position: "Attaquant", number: 2 },
-    { name: "Mathys", position: "?", number: 3 },
+    { name: "Gaetan", position: "Gardien", number: 1, photo: playerPhotos["Gaetan"] },
+    { name: "Amaury", position: "Attaquant", number: 2, photo: playerPhotos["Amaury"] },
+    { name: "Mathys", position: "?", number: 3, photo: playerPhotos["Mathys"] },
     { name: "Owen", position: "?", number: 5 },
     { name: "Eliott", position: "?", number: 7 },
-    { name: "Mao", position: "?", number: 8 },
-    { name: "Maël", position: "?", number: 9 },
-    { name: "Maxence", position: "?", number: 10 },
-    { name: "Killian", position: "?", number: 11 },
+    { name: "Mao", position: "?", number: 8, photo: playerPhotos["Mao"] },
+    { name: "Maël", position: "?", number: 9, photo: playerPhotos["Maël"] },
+    { name: "Maxence", position: "?", number: 10, photo: playerPhotos["Maxence"] },
+    { name: "Killian", position: "?", number: 11, photo: playerPhotos["Killian"] },
   ];
 
   return (
@@ -291,102 +322,102 @@ function App() {
           {/* Couches d'overlay avec opacité */}
           <div className="absolute inset-0">
             {/* Mesh gradient overlay */}
-            <div 
+            <div
               className="w-full h-full opacity-40"
               style={{
                 background: `radial-gradient(circle at 20% 20%, rgba(207, 95, 144, 0.3) 0%, transparent 50%), 
                              radial-gradient(circle at 80% 60%, rgba(167, 72, 96, 0.3) 0%, transparent 50%), 
-                             radial-gradient(circle at 40% 80%, rgba(81, 50, 68, 0.3) 0%, transparent 50%)`
+                             radial-gradient(circle at 40% 80%, rgba(81, 50, 68, 0.3) 0%, transparent 50%)`,
               }}
             ></div>
-            
+
             {/* Formes géométriques flottantes animées */}
-            <motion.div 
+            <motion.div
               className="absolute top-20 left-10 w-32 h-32 rounded-full opacity-20"
-              style={{ background: 'rgba(207, 95, 144, 0.5)' }}
-              animate={{ 
+              style={{ background: "rgba(207, 95, 144, 0.5)" }}
+              animate={{
                 y: [0, -30, 0],
                 scale: [1, 1.1, 1],
-                opacity: [0.2, 0.4, 0.2]
+                opacity: [0.2, 0.4, 0.2],
               }}
-              transition={{ 
-                duration: 8, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
               }}
             />
-            
-            <motion.div 
+
+            <motion.div
               className="absolute top-40 right-16 w-24 h-24 opacity-15"
-              style={{ 
-                background: 'rgba(167, 72, 96, 0.6)', 
-                borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%'
+              style={{
+                background: "rgba(167, 72, 96, 0.6)",
+                borderRadius: "30% 70% 70% 30% / 30% 30% 70% 70%",
               }}
-              animate={{ 
+              animate={{
                 rotate: [0, 180, 360],
                 y: [0, 20, 0],
-                opacity: [0.15, 0.3, 0.15]
+                opacity: [0.15, 0.3, 0.15],
               }}
-              transition={{ 
-                duration: 12, 
-                repeat: Infinity, 
-                ease: "linear" 
+              transition={{
+                duration: 12,
+                repeat: Infinity,
+                ease: "linear",
               }}
             />
-            
-            <motion.div 
+
+            <motion.div
               className="absolute bottom-32 left-1/3 w-20 h-20 opacity-25"
-              style={{ 
-                background: 'rgba(81, 50, 68, 0.7)',
-                clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)'
+              style={{
+                background: "rgba(81, 50, 68, 0.7)",
+                clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
               }}
-              animate={{ 
+              animate={{
                 x: [0, 50, 0],
                 rotate: [0, 120, 240, 360],
-                opacity: [0.25, 0.4, 0.25]
+                opacity: [0.25, 0.4, 0.25],
               }}
-              transition={{ 
-                duration: 10, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
+              transition={{
+                duration: 10,
+                repeat: Infinity,
+                ease: "easeInOut",
               }}
             />
 
             {/* Particules brillantes */}
-            <motion.div 
+            <motion.div
               className="absolute top-1/3 left-1/4 w-2 h-2 bg-white rounded-full opacity-60"
-              animate={{ 
+              animate={{
                 scale: [0, 1, 0],
-                opacity: [0, 0.8, 0]
+                opacity: [0, 0.8, 0],
               }}
-              transition={{ 
-                duration: 3, 
-                repeat: Infinity, 
-                delay: 0
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                delay: 0,
               }}
             />
-            <motion.div 
+            <motion.div
               className="absolute top-1/4 right-1/3 w-1 h-1 bg-white rounded-full opacity-40"
-              animate={{ 
+              animate={{
                 scale: [0, 1, 0],
-                opacity: [0, 0.6, 0]
+                opacity: [0, 0.6, 0],
               }}
-              transition={{ 
-                duration: 4, 
-                repeat: Infinity, 
-                delay: 1
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                delay: 1,
               }}
             />
-            <motion.div 
+            <motion.div
               className="absolute bottom-1/3 left-3/4 w-1.5 h-1.5 bg-white rounded-full opacity-50"
-              animate={{ 
+              animate={{
                 scale: [0, 1, 0],
-                opacity: [0, 0.7, 0]
+                opacity: [0, 0.7, 0],
               }}
-              transition={{ 
-                duration: 3.5, 
-                repeat: Infinity, 
-                delay: 2
+              transition={{
+                duration: 3.5,
+                repeat: Infinity,
+                delay: 2,
               }}
             />
           </div>
@@ -569,6 +600,7 @@ function App() {
                   name={player.name}
                   position={player.position}
                   number={player.number}
+                  photo={player.photo}
                 />
               ))}
             </div>
@@ -579,7 +611,7 @@ function App() {
       {/* SECTION MAILLOTS */}
       <section id="maillots" className="py-20 bg-white relative z-10">
         <div className="container mx-auto px-4">
-          <SectionTitle className="text-slate-900">Nos Maillots</SectionTitle>
+          <SectionTitle className="text-slate-900">Notre Maillot</SectionTitle>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
             {/* Description à gauche */}
