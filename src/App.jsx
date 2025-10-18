@@ -420,8 +420,10 @@ function App() {
             <motion.div
               className="absolute top-1/4 left-1/2 w-16 h-16 opacity-20"
               style={{
-                background: "linear-gradient(45deg, rgba(207, 95, 144, 0.4), rgba(167, 72, 96, 0.4))",
-                clipPath: "polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)",
+                background:
+                  "linear-gradient(45deg, rgba(207, 95, 144, 0.4), rgba(167, 72, 96, 0.4))",
+                clipPath:
+                  "polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%)",
               }}
               animate={{
                 rotate: [0, 360],
@@ -439,7 +441,8 @@ function App() {
             <motion.div
               className="absolute bottom-1/4 right-1/4 w-28 h-28 opacity-18"
               style={{
-                background: "conic-gradient(from 45deg, rgba(81, 50, 68, 0.3), rgba(207, 95, 144, 0.3), rgba(167, 72, 96, 0.3))",
+                background:
+                  "conic-gradient(from 45deg, rgba(81, 50, 68, 0.3), rgba(207, 95, 144, 0.3), rgba(167, 72, 96, 0.3))",
                 transform: "rotate(45deg)",
               }}
               animate={{
@@ -478,7 +481,8 @@ function App() {
             <motion.div
               className="absolute top-1/3 right-1/3 w-12 h-12 rounded-full opacity-22"
               style={{
-                background: "radial-gradient(circle, rgba(167, 72, 96, 0.5) 0%, transparent 70%)",
+                background:
+                  "radial-gradient(circle, rgba(167, 72, 96, 0.5) 0%, transparent 70%)",
               }}
               animate={{
                 scale: [1, 1.8, 1],
@@ -528,7 +532,8 @@ function App() {
             <motion.div
               className="absolute top-1/2 left-0 w-full h-px opacity-10"
               style={{
-                background: "linear-gradient(90deg, transparent 0%, rgba(207, 95, 144, 0.4) 30%, rgba(167, 72, 96, 0.4) 70%, transparent 100%)",
+                background:
+                  "linear-gradient(90deg, transparent 0%, rgba(207, 95, 144, 0.4) 30%, rgba(167, 72, 96, 0.4) 70%, transparent 100%)",
               }}
               animate={{
                 opacity: [0.1, 0.25, 0.1],
@@ -544,7 +549,8 @@ function App() {
             <motion.div
               className="absolute top-0 left-1/2 w-px h-full opacity-8"
               style={{
-                background: "linear-gradient(180deg, transparent 0%, rgba(81, 50, 68, 0.3) 30%, rgba(207, 95, 144, 0.3) 70%, transparent 100%)",
+                background:
+                  "linear-gradient(180deg, transparent 0%, rgba(81, 50, 68, 0.3) 30%, rgba(207, 95, 144, 0.3) 70%, transparent 100%)",
               }}
               animate={{
                 opacity: [0.08, 0.2, 0.08],
@@ -642,6 +648,239 @@ function App() {
                 duration: 4.2,
                 repeat: Infinity,
                 delay: 3,
+              }}
+            />
+
+            {/* NIVEAU DE DÉTAILS SUPPLÉMENTAIRES - EFFETS AVANCÉS */}
+            
+            {/* Spirale de particules */}
+            {[...Array(8)].map((_, i) => (
+              <motion.div
+                key={`spiral-${i}`}
+                className="absolute w-1 h-1 bg-white rounded-full opacity-30"
+                style={{
+                  left: `${50 + 15 * Math.cos(i * Math.PI / 4)}%`,
+                  top: `${50 + 15 * Math.sin(i * Math.PI / 4)}%`,
+                }}
+                animate={{
+                  scale: [0, 1, 0],
+                  opacity: [0, 0.5, 0],
+                  rotate: [0, 360],
+                }}
+                transition={{
+                  duration: 6,
+                  repeat: Infinity,
+                  delay: i * 0.3,
+                  ease: "easeInOut",
+                }}
+              />
+            ))}
+
+            {/* Cascade de formes en diagonale */}
+            {[...Array(6)].map((_, i) => (
+              <motion.div
+                key={`cascade-${i}`}
+                className="absolute w-3 h-3 opacity-15"
+                style={{
+                  left: `${10 + i * 12}%`,
+                  top: `${20 + i * 8}%`,
+                  background: `rgba(${207 - i * 10}, ${95 + i * 5}, 144, 0.4)`,
+                  borderRadius: i % 2 === 0 ? "50%" : "20%",
+                }}
+                animate={{
+                  y: [0, -20, 0],
+                  rotate: [0, 180, 360],
+                  scale: [0.8, 1.2, 0.8],
+                  opacity: [0.15, 0.35, 0.15],
+                }}
+                transition={{
+                  duration: 8 + i,
+                  repeat: Infinity,
+                  delay: i * 0.5,
+                  ease: "easeInOut",
+                }}
+              />
+            ))}
+
+            {/* Formes géométriques complexes supplémentaires */}
+            
+            {/* Étoile à 8 branches */}
+            <motion.div
+              className="absolute top-1/6 left-2/3 w-20 h-20 opacity-12"
+              style={{
+                background: "conic-gradient(from 0deg, rgba(81, 50, 68, 0.3), rgba(207, 95, 144, 0.3), rgba(167, 72, 96, 0.3), rgba(81, 50, 68, 0.3))",
+                clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)",
+              }}
+              animate={{
+                rotate: [0, 360],
+                scale: [0.9, 1.1, 0.9],
+                opacity: [0.12, 0.25, 0.12],
+              }}
+              transition={{
+                duration: 20,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+
+            {/* Pentagone avec effet de morphing */}
+            <motion.div
+              className="absolute bottom-1/6 left-1/6 w-16 h-16 opacity-18"
+              style={{
+                background: "linear-gradient(72deg, rgba(207, 95, 144, 0.4), rgba(81, 50, 68, 0.4))",
+                clipPath: "polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)",
+              }}
+              animate={{
+                rotate: [0, 72, 144, 216, 288, 360],
+                scale: [1, 0.8, 1.2, 0.9, 1],
+                opacity: [0.18, 0.32, 0.18],
+              }}
+              transition={{
+                duration: 16,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            {/* Croix avec rotation complexe */}
+            <motion.div
+              className="absolute top-2/3 right-1/6 w-12 h-12 opacity-20"
+              style={{
+                background: "rgba(167, 72, 96, 0.5)",
+                clipPath: "polygon(40% 0%, 60% 0%, 60% 40%, 100% 40%, 100% 60%, 60% 60%, 60% 100%, 40% 100%, 40% 60%, 0% 60%, 0% 40%, 40% 40%)",
+              }}
+              animate={{
+                rotate: [0, 90, 180, 270, 360],
+                x: [0, 10, -10, 0],
+                y: [0, -10, 10, 0],
+                opacity: [0.2, 0.4, 0.2],
+              }}
+              transition={{
+                duration: 14,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            {/* Vagues flottantes abstraites */}
+            <motion.div
+              className="absolute top-1/2 left-0 w-full h-24 opacity-8"
+              style={{
+                background: "linear-gradient(90deg, transparent 0%, rgba(207, 95, 144, 0.2) 25%, rgba(167, 72, 96, 0.2) 50%, rgba(81, 50, 68, 0.2) 75%, transparent 100%)",
+                clipPath: "polygon(0% 50%, 10% 20%, 20% 60%, 30% 30%, 40% 70%, 50% 40%, 60% 80%, 70% 35%, 80% 65%, 90% 25%, 100% 55%, 100% 100%, 0% 100%)",
+              }}
+              animate={{
+                x: [-100, 100],
+                opacity: [0.08, 0.2, 0.08],
+              }}
+              transition={{
+                duration: 25,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+            />
+
+            {/* Particules en orbite */}
+            {[...Array(5)].map((_, i) => (
+              <motion.div
+                key={`orbit-${i}`}
+                className="absolute w-1.5 h-1.5 bg-white rounded-full opacity-45"
+                style={{
+                  left: "50%",
+                  top: "50%",
+                  transformOrigin: `${40 + i * 10}px 0px`,
+                }}
+                animate={{
+                  rotate: [0, 360],
+                  scale: [0.5, 1, 0.5],
+                  opacity: [0.45, 0.8, 0.45],
+                }}
+                transition={{
+                  duration: 12 + i * 2,
+                  repeat: Infinity,
+                  ease: "linear",
+                }}
+              />
+            ))}
+
+            {/* Effets de superposition complexes */}
+            <motion.div
+              className="absolute inset-0 opacity-5"
+              style={{
+                background: `
+                  radial-gradient(ellipse at 25% 25%, rgba(207, 95, 144, 0.3) 0%, transparent 30%),
+                  radial-gradient(ellipse at 75% 75%, rgba(167, 72, 96, 0.3) 0%, transparent 30%),
+                  radial-gradient(ellipse at 25% 75%, rgba(81, 50, 68, 0.3) 0%, transparent 30%),
+                  radial-gradient(ellipse at 75% 25%, rgba(207, 95, 144, 0.3) 0%, transparent 30%)
+                `,
+              }}
+              animate={{
+                opacity: [0.05, 0.15, 0.05],
+                scale: [1, 1.02, 1],
+              }}
+              transition={{
+                duration: 18,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            {/* Micro-particules scintillantes */}
+            {[...Array(15)].map((_, i) => (
+              <motion.div
+                key={`micro-${i}`}
+                className="absolute w-0.5 h-0.5 bg-white rounded-full opacity-40"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                }}
+                animate={{
+                  scale: [0, 1, 0],
+                  opacity: [0, 0.6, 0],
+                }}
+                transition={{
+                  duration: 2 + Math.random() * 3,
+                  repeat: Infinity,
+                  delay: Math.random() * 5,
+                  ease: "easeInOut",
+                }}
+              />
+            ))}
+
+            {/* Lignes de connexion dynamiques */}
+            <motion.div
+              className="absolute top-1/4 left-1/4 w-32 h-px opacity-12"
+              style={{
+                background: "linear-gradient(90deg, transparent 0%, rgba(207, 95, 144, 0.5) 50%, transparent 100%)",
+                transformOrigin: "left center",
+              }}
+              animate={{
+                rotate: [0, 45, -45, 0],
+                scaleX: [0.5, 1, 0.8, 0.5],
+                opacity: [0.12, 0.3, 0.12],
+              }}
+              transition={{
+                duration: 10,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            <motion.div
+              className="absolute bottom-1/4 right-1/4 w-24 h-px opacity-10"
+              style={{
+                background: "linear-gradient(90deg, transparent 0%, rgba(167, 72, 96, 0.5) 50%, transparent 100%)",
+                transformOrigin: "right center",
+              }}
+              animate={{
+                rotate: [0, -30, 30, 0],
+                scaleX: [0.3, 1, 0.6, 0.3],
+                opacity: [0.1, 0.25, 0.1],
+              }}
+              transition={{
+                duration: 12,
+                repeat: Infinity,
+                ease: "easeInOut",
               }}
             />
           </div>
