@@ -1,0 +1,569 @@
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Button } from "./components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./components/ui/card";
+import { Input } from "./components/ui/input";
+import { Textarea } from "./components/ui/textarea";
+
+function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Données des joueurs
+  const players = [
+    { name: "Gabriel", position: "?", number: 1 },
+    { name: "Quentin", position: "?", number: 2 },
+    { name: "Samuel", position: "?", number: 3 },
+    { name: "Tanguy", position: "?", number: 4 },
+    { name: "Alexis", position: "?", number: 5 },
+    { name: "Antoine", position: "?", number: 6 },
+    { name: "Hector", position: "?", number: 7 },
+    { name: "Lounis", position: "?", number: 8 },
+    { name: "Maël", position: "?", number: 9 },
+    { name: "Maxence", position: "?", number: 10 },
+    { name: "Killian", position: "?", number: 11 },
+  ];
+
+  return (
+    <div className="min-h-screen bg-slate-50 relative overflow-x-hidden font-['Montserrat']">
+      {/* Background decorative elements - Always behind everything */}
+      <div className="fixed inset-0 pointer-events-none -z-10">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-fuchsia-200/10 rounded-full blur-xl"></div>
+        <div className="absolute top-40 right-20 w-24 h-24 bg-pink-200/15 rounded-full blur-lg"></div>
+        <div className="absolute top-60 left-1/4 w-16 h-16 bg-fuchsia-300/8 rounded-full blur-md"></div>
+        <div className="absolute bottom-40 right-1/4 w-40 h-40 bg-slate-200/20 rounded-full blur-2xl"></div>
+      </div>
+
+      {/* HEADER */}
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm shadow-sm z-50"
+      >
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-16">
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              className="text-2xl font-bold bg-gradient-to-r from-fuchsia-600 to-pink-600 bg-clip-text text-transparent"
+            >
+              ClitOlympique
+            </motion.div>
+
+            <nav className="hidden md:flex space-x-8">
+              {["Accueil", "Club", "Équipe", "Maillots", "Tournoi", "Contact"].map((item) => (
+                <motion.a
+                  key={item}
+                  href={`#${item.toLowerCase()}`}
+                  whileHover={{ scale: 1.05 }}
+                  className="text-gray-700 hover:text-fuchsia-600 transition-colors font-medium"
+                >
+                  {item}
+                </motion.a>
+              ))}
+            </nav>
+
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-2"
+            >
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </motion.button>
+          </div>
+        </div>
+      </motion.header>
+
+      {/* SECTION HÉROS */}
+      <section
+        id="accueil"
+        className="min-h-screen flex items-center justify-center relative z-10 overflow-hidden"
+      >
+        {/* Background avec effet de flammes inspiré des maillots */}
+        <div className="absolute inset-0">
+          {/* Nouveau background avec effet de flammes stylisées */}
+          <div
+            className="w-full h-full"
+            style={{
+              background: `linear-gradient(180deg, #513244 0%, #A74860 50%, #CF5F90 100%)`,
+            }}
+          ></div>
+
+          {/* Flammes CSS réalistes qui fonctionnent */}
+          <div className="absolute inset-0 overflow-hidden">
+            {/* Base des flammes */}
+            <div className="absolute bottom-0 left-0 w-full h-1/4 bg-gradient-to-t from-black/30 to-transparent"></div>
+
+            {/* Flammes CSS avec vraies formes */}
+            <motion.div
+              className="absolute bottom-0 left-8 w-24 h-48"
+              style={{
+                background: `linear-gradient(180deg, transparent 0%, #CF5F90 15%, #A74860 45%, #513244 100%)`,
+                clipPath: "polygon(50% 0%, 42% 8%, 38% 18%, 44% 28%, 35% 38%, 40% 48%, 30% 58%, 38% 68%, 25% 78%, 35% 88%, 50% 100%, 65% 88%, 75% 78%, 62% 68%, 70% 58%, 60% 48%, 65% 38%, 56% 28%, 62% 18%, 58% 8%)",
+              }}
+              animate={{
+                scaleY: [1, 1.12, 0.88, 1.05, 1],
+                scaleX: [1, 0.94, 1.08, 0.97, 1],
+              }}
+              transition={{
+                duration: 3.2,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            <motion.div
+              className="absolute bottom-0 left-32 w-28 h-56"
+              style={{
+                background: `linear-gradient(180deg, transparent 0%, #CF5F90 20%, #A74860 50%, #513244 100%)`,
+                clipPath: "polygon(50% 0%, 46% 10%, 54% 15%, 43% 25%, 48% 35%, 38% 45%, 45% 55%, 33% 65%, 42% 75%, 28% 85%, 50% 100%, 72% 85%, 58% 75%, 67% 65%, 55% 55%, 62% 45%, 52% 35%, 57% 25%, 46% 15%, 54% 10%)",
+              }}
+              animate={{
+                scaleY: [1, 0.91, 1.22, 0.95, 1],
+                scaleX: [1, 1.12, 0.81, 1.06, 1],
+              }}
+              transition={{
+                duration: 2.8,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.7,
+              }}
+            />
+
+            <motion.div
+              className="absolute bottom-0 right-32 w-26 h-52"
+              style={{
+                background: `linear-gradient(180deg, transparent 0%, #CF5F90 18%, #A74860 48%, #513244 100%)`,
+                clipPath: "polygon(50% 0%, 44% 12%, 50% 22%, 41% 32%, 47% 42%, 36% 52%, 43% 62%, 31% 72%, 40% 82%, 27% 92%, 50% 100%, 73% 92%, 60% 82%, 69% 72%, 57% 62%, 64% 52%, 53% 42%, 59% 32%, 50% 22%, 56% 12%)",
+              }}
+              animate={{
+                scaleY: [1, 1.08, 0.85, 1.15, 1],
+                scaleX: [1, 0.92, 1.14, 0.89, 1],
+              }}
+              transition={{
+                duration: 3.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1.2,
+              }}
+            />
+
+            <motion.div
+              className="absolute bottom-0 right-8 w-24 h-48"
+              style={{
+                background: `linear-gradient(180deg, transparent 0%, #CF5F90 28%, #A74860 58%, #513244 100%)`,
+                clipPath: "polygon(50% 0%, 42% 20%, 48% 30%, 36% 40%, 44% 50%, 31% 60%, 39% 70%, 26% 80%, 34% 90%, 21% 100%, 50% 100%, 79% 100%, 66% 90%, 74% 80%, 61% 70%, 69% 60%, 56% 50%, 64% 40%, 52% 30%, 58% 20%)",
+              }}
+              animate={{
+                scaleY: [1, 1.17, 0.79, 1.11, 1],
+                scaleX: [1, 0.86, 1.22, 0.92, 1],
+              }}
+              transition={{
+                duration: 2.6,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1.8,
+              }}
+            />
+
+            <motion.div
+              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-32 h-64"
+              style={{
+                background: `linear-gradient(180deg, transparent 0%, #CF5F90 12%, #A74860 40%, #513244 100%)`,
+                clipPath: "polygon(50% 0%, 45% 8%, 52% 16%, 43% 24%, 49% 32%, 38% 40%, 46% 48%, 35% 56%, 44% 64%, 30% 72%, 42% 80%, 28% 88%, 50% 100%, 72% 88%, 58% 80%, 70% 72%, 56% 64%, 65% 56%, 54% 48%, 62% 40%, 51% 32%, 57% 24%, 48% 16%, 55% 8%)",
+              }}
+              animate={{
+                scaleY: [1, 1.05, 0.93, 1.18, 1],
+                scaleX: [1, 0.88, 1.15, 0.95, 1],
+              }}
+              transition={{
+                duration: 4.1,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.3,
+              }}
+            />
+
+            <motion.div
+              className="absolute bottom-0 left-1/4 w-20 h-40"
+              style={{
+                background: `linear-gradient(180deg, transparent 0%, #CF5F90 25%, #A74860 60%, #513244 100%)`,
+                clipPath: "polygon(50% 0%, 46% 15%, 54% 25%, 42% 35%, 50% 45%, 38% 55%, 47% 65%, 33% 75%, 42% 85%, 50% 100%, 58% 85%, 67% 75%, 53% 65%, 62% 55%, 50% 45%, 58% 35%, 46% 25%, 54% 15%)",
+              }}
+              animate={{
+                scaleY: [1, 0.87, 1.25, 0.98, 1],
+                scaleX: [1, 1.18, 0.79, 1.03, 1],
+              }}
+              transition={{
+                duration: 2.9,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 2.1,
+              }}
+            />
+
+            <motion.div
+              className="absolute bottom-0 right-1/4 w-22 h-44"
+              style={{
+                background: `linear-gradient(180deg, transparent 0%, #CF5F90 22%, #A74860 52%, #513244 100%)`,
+                clipPath: "polygon(50% 0%, 43% 18%, 51% 28%, 40% 38%, 48% 48%, 35% 58%, 44% 68%, 29% 78%, 39% 88%, 50% 100%, 61% 88%, 71% 78%, 56% 68%, 65% 58%, 52% 48%, 60% 38%, 49% 28%, 57% 18%)",
+              }}
+              animate={{
+                scaleY: [1, 1.14, 0.82, 1.09, 1],
+                scaleX: [1, 0.91, 1.19, 0.94, 1],
+              }}
+              transition={{
+                duration: 3.7,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1.5,
+              }}
+            />
+          </div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="mb-12"
+            >
+              <img
+                src="/logo-clitolympique.png"
+                alt="Clitolympique Logo"
+                className="w-72 h-72 object-contain drop-shadow-lg mx-auto mb-8"
+                onError={(e) => {
+                  e.target.style.display = "none";
+                }}
+              />
+              <h1 className="text-6xl md:text-8xl font-bold text-white mb-6 drop-shadow-2xl">
+                ClitOlympique
+              </h1>
+              <p className="text-xl md:text-2xl text-white/90 mb-8 drop-shadow-lg">
+                L'équipe de football qui monte au niveau national
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <Button
+                size="lg"
+                className="bg-white text-fuchsia-600 hover:bg-gray-100 font-semibold px-8 py-3 text-lg shadow-lg"
+              >
+                Rejoindre l'équipe
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-white text-white hover:bg-white hover:text-fuchsia-600 font-semibold px-8 py-3 text-lg shadow-lg"
+              >
+                Voir nos matchs
+              </Button>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION CLUB */}
+      <section id="club" className="py-20 bg-slate-50 relative z-10">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-fuchsia-600 to-pink-600 bg-clip-text text-transparent">
+              Notre Club
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              ClitOlympique est née de la passion commune pour le football et l'envie de créer quelque chose d'extraordinaire sur les terrains.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Notre Histoire",
+                description: "Fondée par des passionnés, notre équipe grandit avec ambition et détermination pour atteindre les sommets du football amateur.",
+                icon: "🏆"
+              },
+              {
+                title: "Nos Valeurs",
+                description: "Fair-play, esprit d'équipe et dépassement de soi. Nous cultivons l'excellence sportive dans le respect de nos adversaires.",
+                icon: "⚽"
+              },
+              {
+                title: "Notre Ambition",
+                description: "Monter en division supérieure et représenter fièrement nos couleurs au niveau national avec style et caractère.",
+                icon: "🎯"
+              }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                viewport={{ once: true }}
+              >
+                <Card className="h-full hover:shadow-lg transition-shadow">
+                  <CardHeader className="text-center">
+                    <div className="text-4xl mb-4">{item.icon}</div>
+                    <CardTitle className="text-xl text-fuchsia-600">{item.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription className="text-center text-gray-600">
+                      {item.description}
+                    </CardDescription>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION ÉQUIPE */}
+      <section id="equipe" className="py-20 bg-white relative z-10">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-fuchsia-600 to-pink-600 bg-clip-text text-transparent">
+              Notre Équipe
+            </h2>
+            <p className="text-xl text-gray-600">
+              Rencontrez les joueurs qui portent haut les couleurs de ClitOlympique
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            {players.map((player, index) => (
+              <motion.div
+                key={player.number}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <Card className="text-center hover:shadow-md transition-shadow">
+                  <CardHeader className="pb-2">
+                    <div className="w-16 h-16 bg-gradient-to-br from-fuchsia-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-3">
+                      {player.number}
+                    </div>
+                    <CardTitle className="text-lg">{player.name}</CardTitle>
+                    <CardDescription>{player.position}</CardDescription>
+                  </CardHeader>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION MAILLOTS */}
+      <section id="maillots" className="py-20 bg-white relative z-10">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-fuchsia-600 to-pink-600 bg-clip-text text-transparent">
+              Nos Maillots
+            </h2>
+            <p className="text-xl text-gray-600">
+              Découvrez nos designs uniques qui reflètent l'esprit de ClitOlympique
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { name: "Maillot Domicile", image: "/maillot-domicile.jpg", description: "Notre maillot principal aux couleurs emblématiques" },
+              { name: "Maillot Extérieur", image: "/maillot-exterieur.jpg", description: "Pour briller lors de nos déplacements" },
+              { name: "Maillot Third", image: "/maillot-third.jpg", description: "Notre troisième tenue pour les grandes occasions" }
+            ].map((maillot, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.02 }}
+              >
+                <Card className="overflow-hidden hover:shadow-lg transition-shadow">
+                  <div className="aspect-square bg-gradient-to-br from-fuchsia-100 to-pink-100 flex items-center justify-center">
+                    <img
+                      src={maillot.image}
+                      alt={maillot.name}
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.target.style.display = "none";
+                        e.target.parentElement.innerHTML = `<div class="text-6xl">👕</div>`;
+                      }}
+                    />
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="text-xl text-fuchsia-600">{maillot.name}</CardTitle>
+                    <CardDescription>{maillot.description}</CardDescription>
+                  </CardHeader>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION TOURNOI */}
+      <section id="tournoi" className="py-20 bg-slate-50 relative z-10">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-fuchsia-600 to-pink-600 bg-clip-text text-transparent">
+              Prochains Matchs
+            </h2>
+            <p className="text-xl text-gray-600">
+              Suivez notre parcours et venez nous encourager lors de nos prochaines rencontres
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { date: "15 Nov 2024", opponent: "FC Rivaux", time: "15:00", location: "Terrain Municipal" },
+              { date: "22 Nov 2024", opponent: "Athletic Club", time: "18:30", location: "Stade des Champions" },
+              { date: "29 Nov 2024", opponent: "Sporting United", time: "14:00", location: "Complexe Sportif" }
+            ].map((match, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <Card className="hover:shadow-md transition-shadow">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-lg">ClitOlympique</CardTitle>
+                      <span className="text-sm text-gray-500">{match.date}</span>
+                    </div>
+                    <CardDescription className="text-center text-xl font-semibold text-fuchsia-600">
+                      VS {match.opponent}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-center space-y-2">
+                      <p className="font-semibold">{match.time}</p>
+                      <p className="text-gray-600">{match.location}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION CONTACT */}
+      <section id="contact" className="py-20 bg-white relative z-10">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-fuchsia-600 to-pink-600 bg-clip-text text-transparent">
+              Nous Contacter
+            </h2>
+            <p className="text-xl text-gray-600">
+              Rejoignez l'aventure ClitOlympique ou contactez-nous pour plus d'informations
+            </p>
+          </motion.div>
+
+          <div className="max-w-2xl mx-auto">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-center">Formulaire de Contact</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Prénom</label>
+                    <Input placeholder="Votre prénom" />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Nom</label>
+                    <Input placeholder="Votre nom" />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-2">Email</label>
+                  <Input type="email" placeholder="votre.email@exemple.com" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-2">Sujet</label>
+                  <Input placeholder="Objet de votre message" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-2">Message</label>
+                  <Textarea placeholder="Votre message..." className="min-h-32" />
+                </div>
+                <Button className="w-full bg-gradient-to-r from-fuchsia-600 to-pink-600 hover:from-fuchsia-700 hover:to-pink-700">
+                  Envoyer le message
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="bg-gray-800 text-white py-8">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="text-xl font-bold bg-gradient-to-r from-fuchsia-400 to-pink-400 bg-clip-text text-transparent mb-4 md:mb-0">
+              ClitOlympique
+            </div>
+            <div className="text-gray-400 text-center md:text-right">
+              <p>&copy; 2024 ClitOlympique. Tous droits réservés.</p>
+              <p className="text-sm mt-1">Football avec passion et excellence</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
