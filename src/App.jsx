@@ -279,7 +279,7 @@ function App() {
                 <h1 className="text-2xl font-bold text-slate-900">
                   Clitolympique
                 </h1>
-                <p className="text-xs text-pink-300 font-medium">
+                <p className="text-xs text-pink-800 font-medium">
                   Football Club
                 </p>
               </div>
@@ -814,14 +814,6 @@ function App() {
                         size="sm"
                         className="border-slate-300 text-pink-700 hover:bg-slate-100"
                       >
-                        <Facebook size={16} className="mr-2" />
-                        Facebook
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="border-slate-300 text-pink-700 hover:bg-slate-100"
-                      >
                         <Instagram size={16} className="mr-2" />
                         Instagram
                       </Button>
@@ -890,7 +882,7 @@ function App() {
                     </div>
                     <Button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-fuchsia-600 to-pink-600 hover:from-fuchsia-700 hover:to-pink-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+                      className="w-full bg-gradient-to-r from-pink-700 to-pink-900 hover:from-fuchsia-700 hover:to-pink-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
                     >
                       Envoyer le message
                     </Button>
@@ -905,19 +897,6 @@ function App() {
       {/* FOOTER */}
       <footer className="bg-gray-800 text-white py-8">
         <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="flex justify-center items-center gap-4 mb-4"
-          >
-            <Trophy className="text-pink-700" size={24} />
-            <Star className="text-slate-600" size={20} />
-            <Heart className="text-pink-700" size={20} />
-            <Star className="text-slate-600" size={20} />
-            <Trophy className="text-pink-700" size={24} />
-          </motion.div>
           <p className="text-lg">© 2025 Clitolympique</p>
         </div>
       </footer>
