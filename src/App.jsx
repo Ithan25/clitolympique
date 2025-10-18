@@ -278,149 +278,115 @@ function App() {
         id="accueil"
         className="min-h-screen flex items-center justify-center relative z-10 overflow-hidden"
       >
-        {/* Background avec effet de flammes inspiré des maillots */}
+        {/* Background moderne avec dégradé et formes géométriques */}
         <div className="absolute inset-0">
+          {/* Dégradé de base diagonal */}
           <div
             className="w-full h-full"
             style={{
-              background: `linear-gradient(180deg, #513244 0%, #A74860 50%, #CF5F90 100%)`,
+              background: `linear-gradient(135deg, #513244 0%, #A74860 40%, #CF5F90 100%)`,
             }}
           ></div>
 
-          {/* Flammes stylisées comme dans l'image de référence */}
-          <div className="absolute inset-0 overflow-hidden">
-            {/* Base des flammes */}
-            <div className="absolute bottom-0 left-0 w-full h-1/4 bg-gradient-to-t from-black/30 to-transparent"></div>
-
-            <motion.div
-              className="absolute bottom-0 left-8 w-24 h-48"
+          {/* Couches d'overlay avec opacité */}
+          <div className="absolute inset-0">
+            {/* Mesh gradient overlay */}
+            <div 
+              className="w-full h-full opacity-40"
               style={{
-                background: `linear-gradient(180deg, transparent 0%, #CF5F90 15%, #A74860 45%, #513244 100%)`,
-                clipPath:
-                  "polygon(50% 0%, 42% 8%, 38% 18%, 44% 28%, 35% 38%, 40% 48%, 30% 58%, 38% 68%, 25% 78%, 35% 88%, 50% 100%, 65% 88%, 75% 78%, 62% 68%, 70% 58%, 60% 48%, 65% 38%, 56% 28%, 62% 18%, 58% 8%)",
+                background: `radial-gradient(circle at 20% 20%, rgba(207, 95, 144, 0.3) 0%, transparent 50%), 
+                             radial-gradient(circle at 80% 60%, rgba(167, 72, 96, 0.3) 0%, transparent 50%), 
+                             radial-gradient(circle at 40% 80%, rgba(81, 50, 68, 0.3) 0%, transparent 50%)`
               }}
-              animate={{
-                scaleY: [1, 1.12, 0.88, 1.05, 1],
-                scaleX: [1, 0.94, 1.08, 0.97, 1],
+            ></div>
+            
+            {/* Formes géométriques flottantes animées */}
+            <motion.div 
+              className="absolute top-20 left-10 w-32 h-32 rounded-full opacity-20"
+              style={{ background: 'rgba(207, 95, 144, 0.5)' }}
+              animate={{ 
+                y: [0, -30, 0],
+                scale: [1, 1.1, 1],
+                opacity: [0.2, 0.4, 0.2]
               }}
-              transition={{
-                duration: 3.2,
-                repeat: Infinity,
-                ease: "easeInOut",
+              transition={{ 
+                duration: 8, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
+              }}
+            />
+            
+            <motion.div 
+              className="absolute top-40 right-16 w-24 h-24 opacity-15"
+              style={{ 
+                background: 'rgba(167, 72, 96, 0.6)', 
+                borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%'
+              }}
+              animate={{ 
+                rotate: [0, 180, 360],
+                y: [0, 20, 0],
+                opacity: [0.15, 0.3, 0.15]
+              }}
+              transition={{ 
+                duration: 12, 
+                repeat: Infinity, 
+                ease: "linear" 
+              }}
+            />
+            
+            <motion.div 
+              className="absolute bottom-32 left-1/3 w-20 h-20 opacity-25"
+              style={{ 
+                background: 'rgba(81, 50, 68, 0.7)',
+                clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)'
+              }}
+              animate={{ 
+                x: [0, 50, 0],
+                rotate: [0, 120, 240, 360],
+                opacity: [0.25, 0.4, 0.25]
+              }}
+              transition={{ 
+                duration: 10, 
+                repeat: Infinity, 
+                ease: "easeInOut" 
               }}
             />
 
-            <motion.div
-              className="absolute bottom-0 left-32 w-28 h-56"
-              style={{
-                background: `linear-gradient(180deg, transparent 0%, #CF5F90 20%, #A74860 50%, #513244 100%)`,
-                clipPath:
-                  "polygon(50% 0%, 46% 10%, 54% 15%, 43% 25%, 48% 35%, 38% 45%, 45% 55%, 33% 65%, 42% 75%, 28% 85%, 50% 100%, 72% 85%, 58% 75%, 67% 65%, 55% 55%, 62% 45%, 52% 35%, 57% 25%, 46% 15%, 54% 10%)",
+            {/* Particules brillantes */}
+            <motion.div 
+              className="absolute top-1/3 left-1/4 w-2 h-2 bg-white rounded-full opacity-60"
+              animate={{ 
+                scale: [0, 1, 0],
+                opacity: [0, 0.8, 0]
               }}
-              animate={{
-                scaleY: [1, 0.91, 1.22, 0.95, 1],
-                scaleX: [1, 1.12, 0.81, 1.06, 1],
-              }}
-              transition={{
-                duration: 2.8,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 0.7,
+              transition={{ 
+                duration: 3, 
+                repeat: Infinity, 
+                delay: 0
               }}
             />
-
-            <motion.div
-              className="absolute bottom-0 left-1/4 w-32 h-64"
-              style={{
-                background: `linear-gradient(180deg, transparent 0%, #CF5F90 15%, #A74860 40%, #513244 100%)`,
-                clipPath:
-                  "polygon(50% 0%, 40% 12%, 45% 22%, 35% 32%, 42% 42%, 30% 52%, 38% 62%, 25% 72%, 33% 82%, 20% 92%, 50% 100%, 80% 92%, 67% 82%, 75% 72%, 62% 62%, 70% 52%, 58% 42%, 65% 32%, 55% 22%, 60% 12%)",
+            <motion.div 
+              className="absolute top-1/4 right-1/3 w-1 h-1 bg-white rounded-full opacity-40"
+              animate={{ 
+                scale: [0, 1, 0],
+                opacity: [0, 0.6, 0]
               }}
-              animate={{
-                scaleY: [1, 1.18, 0.78, 1.12, 1],
-                scaleX: [1, 0.85, 1.21, 0.97, 1],
-              }}
-              transition={{
-                duration: 4.2,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 1.3,
+              transition={{ 
+                duration: 4, 
+                repeat: Infinity, 
+                delay: 1
               }}
             />
-
-            <motion.div
-              className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-36 h-72"
-              style={{
-                background: `linear-gradient(180deg, transparent 0%, #CF5F90 10%, #A74860 35%, #513244 100%)`,
-                clipPath:
-                  "polygon(50% 0%, 44% 8%, 52% 16%, 41% 24%, 47% 32%, 36% 40%, 44% 48%, 32% 56%, 40% 64%, 28% 72%, 36% 80%, 24% 88%, 50% 100%, 76% 88%, 64% 80%, 72% 72%, 60% 64%, 68% 56%, 56% 48%, 64% 40%, 53% 32%, 59% 24%, 48% 16%, 56% 8%)",
+            <motion.div 
+              className="absolute bottom-1/3 left-3/4 w-1.5 h-1.5 bg-white rounded-full opacity-50"
+              animate={{ 
+                scale: [0, 1, 0],
+                opacity: [0, 0.7, 0]
               }}
-              animate={{
-                scaleY: [1, 0.87, 1.25, 0.93, 1],
-                scaleX: [1, 1.16, 0.76, 1.08, 1],
-              }}
-              transition={{
-                duration: 4.8,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 0.9,
-              }}
-            />
-
-            <motion.div
-              className="absolute bottom-0 right-1/4 w-32 h-64"
-              style={{
-                background: `linear-gradient(180deg, transparent 0%, #CF5F90 15%, #A74860 40%, #513244 100%)`,
-                clipPath:
-                  "polygon(50% 0%, 43% 15%, 49% 25%, 38% 35%, 45% 45%, 32% 55%, 40% 65%, 27% 75%, 35% 85%, 22% 95%, 50% 100%, 78% 95%, 65% 85%, 73% 75%, 60% 65%, 68% 55%, 55% 45%, 62% 35%, 51% 25%, 57% 15%)",
-              }}
-              animate={{
-                scaleY: [1, 1.14, 0.84, 1.07, 1],
-                scaleX: [1, 0.89, 1.19, 0.96, 1],
-              }}
-              transition={{
-                duration: 3.1,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 2.1,
-              }}
-            />
-
-            <motion.div
-              className="absolute bottom-0 right-32 w-28 h-56"
-              style={{
-                background: `linear-gradient(180deg, transparent 0%, #CF5F90 20%, #A74860 50%, #513244 100%)`,
-                clipPath:
-                  "polygon(50% 0%, 45% 18%, 52% 28%, 40% 38%, 47% 48%, 35% 58%, 42% 68%, 30% 78%, 38% 88%, 25% 98%, 50% 100%, 75% 98%, 62% 88%, 70% 78%, 58% 68%, 65% 58%, 53% 48%, 60% 38%, 48% 28%, 55% 18%)",
-              }}
-              animate={{
-                scaleY: [1, 0.92, 1.21, 0.98, 1],
-                scaleX: [1, 1.13, 0.83, 1.05, 1],
-              }}
-              transition={{
-                duration: 3.7,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 0.4,
-              }}
-            />
-
-            <motion.div
-              className="absolute bottom-0 right-8 w-24 h-48"
-              style={{
-                background: `linear-gradient(180deg, transparent 0%, #CF5F90 28%, #A74860 58%, #513244 100%)`,
-                clipPath:
-                  "polygon(50% 0%, 42% 20%, 48% 30%, 36% 40%, 44% 50%, 31% 60%, 39% 70%, 26% 80%, 34% 90%, 21% 100%, 50% 100%, 79% 100%, 66% 90%, 74% 80%, 61% 70%, 69% 60%, 56% 50%, 64% 40%, 52% 30%, 58% 20%)",
-              }}
-              animate={{
-                scaleY: [1, 1.17, 0.79, 1.11, 1],
-                scaleX: [1, 0.86, 1.22, 0.92, 1],
-              }}
-              transition={{
-                duration: 2.6,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 1.8,
+              transition={{ 
+                duration: 3.5, 
+                repeat: Infinity, 
+                delay: 2
               }}
             />
           </div>
