@@ -24,6 +24,7 @@ import maillot14 from "./assets/maillots/14.png";
 import maillot15 from "./assets/maillots/15.png";
 import maillot16 from "./assets/maillots/16.png";
 import photoAmaury from "./assets/photos/Amaury.png";
+import photoEliott from "./assets/photos/Eliott.png";
 import photoGaetan from "./assets/photos/Gaetan.png";
 import photoKillian from "./assets/photos/Killian.png";
 import photoMael from "./assets/photos/Mael.png";
@@ -31,6 +32,7 @@ import photoMao from "./assets/photos/Mao.png";
 import photoMathys from "./assets/photos/Mathys.png";
 import photoMaxence from "./assets/photos/Maxence.png";
 import photoGroupe from "./assets/photos/groupe.jpg";
+import photoEquipe from "./assets/photos/equipe.png";
 import {
   Trophy,
   Users,
@@ -241,6 +243,7 @@ function App() {
     Gaetan: photoGaetan,
     Amaury: photoAmaury,
     Mathys: photoMathys,
+    Eliott: photoEliott,
     Mao: photoMao,
     Maël: photoMael,
     Maxence: photoMaxence,
@@ -262,7 +265,7 @@ function App() {
     },
     { name: "Mathys", position: "?", number: 3, photo: playerPhotos["Mathys"] },
     { name: "Owen", position: "?", number: 5 },
-    { name: "Eliott", position: "?", number: 7 },
+    { name: "Eliott", position: "?", number: 7, photo: playerPhotos["Eliott"] },
     { name: "Mao", position: "?", number: 8, photo: playerPhotos["Mao"] },
     { name: "Maël", position: "?", number: 9, photo: playerPhotos["Maël"] },
     {
@@ -1066,8 +1069,12 @@ function App() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="h-80 bg-slate-100 rounded-lg shadow-xl flex items-center justify-center">
-                <Users size={80} className="text-pink-700" />
+              <div className="h-80 bg-slate-100 rounded-lg shadow-xl overflow-hidden">
+                <img
+                  src={photoEquipe}
+                  alt="Équipe Clitolympique"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </motion.div>
           </div>
@@ -1203,7 +1210,7 @@ function App() {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div className="h-80 bg-slate-100 rounded-lg shadow-xl overflow-hidden">
+              <div className="h-100 bg-slate-100 rounded-lg shadow-xl overflow-hidden">
                 <img
                   src={photoGroupe}
                   alt="Photo de groupe de l'équipe Clitolympique"
@@ -1292,14 +1299,20 @@ function App() {
                       Suivez-nous sur les réseaux :
                     </p>
                     <div className="flex gap-4">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="border-slate-300 text-pink-700 hover:bg-slate-100"
+                      <a
+                        href="https://www.instagram.com/clitolympique_officiel/"
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        <Instagram size={16} className="mr-2" />
-                        Instagram
-                      </Button>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="border-slate-300 text-pink-700 hover:bg-slate-100"
+                        >
+                          <Instagram size={16} className="mr-2" />
+                          Instagram
+                        </Button>
+                      </a>
                     </div>
                   </div>
                   <div className="pt-4 border-t">
