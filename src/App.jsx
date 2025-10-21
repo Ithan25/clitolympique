@@ -1069,7 +1069,7 @@ function App() {
               viewport={{ once: true }}
               className="relative"
             >
-              <div className="h-80 bg-slate-100 rounded-lg shadow-xl overflow-hidden">
+              <div className="h-100 bg-slate-100 rounded-lg shadow-xl overflow-hidden">
                 <img
                   src={photoEquipe}
                   alt="Équipe Clitolympique"
