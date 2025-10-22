@@ -1434,6 +1434,10 @@ function App() {
           <p className="text-lg">© 2025 Clitolympique</p>
         </div>
       </footer>
+
+      {/* Vercel Analytics & Speed Insights */}
+      <Analytics />
+      <SpeedInsights />
     </div>
   );
 }
