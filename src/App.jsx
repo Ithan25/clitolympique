@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card";
 import { Button } from "./components/ui/button";
 import { Input } from "./components/ui/input";
 import { Textarea } from "./components/ui/textarea";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import logoClitolympique from "./assets/logo.png";
 import maillot1 from "./assets/maillots/1.png";
 import maillot2 from "./assets/maillots/2.png";
