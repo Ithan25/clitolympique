@@ -32,6 +32,8 @@ import photoMao from "./assets/photos/Mao.png";
 import photoMathys from "./assets/photos/Mathys.png";
 import photoMaxence from "./assets/photos/Maxence.png";
 import photoIthan from "./assets/photos/Ithan.png";
+import photoOwen from "./assets/photos/Owen.png";
+import photoBastian from "./assets/photos/Bastian.png";
 import photoGroupe from "./assets/photos/groupe.jpg";
 import photoEquipe from "./assets/photos/equipe.png";
 import {
@@ -250,6 +252,8 @@ function App() {
     Maxence: photoMaxence,
     Killian: photoKillian,
     Ithan: photoIthan,
+    Owen: photoOwen,
+    Bastian: photoBastian,
   };
 
   const players = [
@@ -271,7 +275,12 @@ function App() {
       number: 3,
       photo: playerPhotos["Mathys"],
     },
-    { name: "Owen", position: "Défenseur", number: 5 },
+    {
+      name: "Owen",
+      position: "Défenseur",
+      number: 5,
+      photo: playerPhotos["Owen"],
+    },
     {
       name: "Eliott",
       position: "Milieu",
@@ -1122,6 +1131,7 @@ function App() {
                   name="Bastian"
                   position="Entraîneur"
                   isCoach={true}
+                  photo={playerPhotos["Bastian"]}
                 />
               </div>
             </div>
