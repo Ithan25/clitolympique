@@ -31,6 +31,7 @@ import photoMael from "./assets/photos/Mael.png";
 import photoMao from "./assets/photos/Mao.png";
 import photoMathys from "./assets/photos/Mathys.png";
 import photoMaxence from "./assets/photos/Maxence.png";
+import photoIthan from "./assets/photos/Ithan.png";
 import photoGroupe from "./assets/photos/groupe.jpg";
 import photoEquipe from "./assets/photos/equipe.png";
 import {
@@ -106,7 +107,7 @@ const PlayerCard = ({
             isCoach ? "text-pink-700 font-semibold" : "text-slate-800"
           }`}
         >
-          {name}
+          {isCoach ? name : `${name} ${number ? `#${number}` : ""}`}
         </CardTitle>
         {position && (
           <p className="text-sm text-slate-600 font-medium">
@@ -248,6 +249,7 @@ function App() {
     Maël: photoMael,
     Maxence: photoMaxence,
     Killian: photoKillian,
+    Ithan: photoIthan,
   };
 
   const players = [
@@ -259,24 +261,39 @@ function App() {
     },
     {
       name: "Amaury",
-      position: "Attaquant",
+      position: "Défenseur",
       number: 2,
       photo: playerPhotos["Amaury"],
     },
-    { name: "Mathys", position: "?", number: 3, photo: playerPhotos["Mathys"] },
-    { name: "Owen", position: "?", number: 5 },
-    { name: "Eliott", position: "?", number: 7, photo: playerPhotos["Eliott"] },
-    { name: "Mao", position: "?", number: 8, photo: playerPhotos["Mao"] },
-    { name: "Maël", position: "?", number: 9, photo: playerPhotos["Maël"] },
+    {
+      name: "Mathys",
+      position: "Défenseur",
+      number: 3,
+      photo: playerPhotos["Mathys"],
+    },
+    { name: "Owen", position: "Défenseur", number: 5 },
+    {
+      name: "Eliott",
+      position: "Milieu",
+      number: 7,
+      photo: playerPhotos["Eliott"],
+    },
+    { name: "Mao", position: "Milieu", number: 8, photo: playerPhotos["Mao"] },
+    {
+      name: "Maël",
+      position: "Attaquant",
+      number: 9,
+      photo: playerPhotos["Maël"],
+    },
     {
       name: "Maxence",
-      position: "?",
+      position: "Attaquant",
       number: 10,
       photo: playerPhotos["Maxence"],
     },
     {
       name: "Killian",
-      position: "?",
+      position: "Gardien",
       number: 11,
       photo: playerPhotos["Killian"],
     },
@@ -1097,6 +1114,7 @@ function App() {
                   name="Ithan Boismard-Gillot"
                   position="Président"
                   isCoach={true}
+                  photo={playerPhotos["Ithan"]}
                 />
               </div>
               <div className="w-64">
