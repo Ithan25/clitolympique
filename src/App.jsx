@@ -8,6 +8,7 @@ import { Input } from "./components/ui/input";
 import { Textarea } from "./components/ui/textarea";
 import logoClitolympique from "./assets/logo.png";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 import maillot1 from "./assets/maillots/1.png";
 import maillot2 from "./assets/maillots/2.png";
 import maillot3 from "./assets/maillots/3.png";
