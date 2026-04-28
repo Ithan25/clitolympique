@@ -274,13 +274,13 @@ function App() {
     {
       name: "Mathys",
       position: "Défenseur",
-      number: 3,
+      number: 4,
       photo: playerPhotos["Mathys"],
     },
     {
       name: "Owen",
       position: "Défenseur",
-      number: 5,
+      number: 12,
       photo: playerPhotos["Owen"],
     },
     {
@@ -305,7 +305,7 @@ function App() {
     {
       name: "Killian",
       position: "Gardien",
-      number: 11,
+      number: 21,
       photo: playerPhotos["Killian"],
     },
   ];
