@@ -168,13 +168,13 @@ function App() {
   const players = [
     { name: "Gaetan", position: "Gardien", number: 1 },
     { name: "Amaury", position: "Attaquant", number: 2 },
-    { name: "Mathys", position: "?", number: 3 },
-    { name: "Owen", position: "?", number: 5 },
+    { name: "Mathys", position: "?", number: 4 },
+    { name: "Owen", position: "?", number: 12 },
     { name: "Eliott", position: "?", number: 7 },
-    { name: "Mao", position: "?", number: 8 },
+    { name: "Mao", position: "?", number: 11 },
     { name: "Maël", position: "?", number: 9 },
     { name: "Maxence", position: "?", number: 10 },
-    { name: "Killian", position: "?", number: 11 },
+    { name: "Killian", position: "?", number: 21 },
   ];
 
   return (
